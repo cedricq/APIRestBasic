@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, Request
-from datetime import datetime
+from datetime import datetime, UTC
 import os
 
 app = FastAPI()
@@ -13,7 +13,7 @@ def hello():
 async def receive_raw(request: Request):
     body = await request.body()   # retrieve raw data (bytes)
     os.makedirs("uploads", exist_ok=True)
-    timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+    timestamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     filename = f"uploads/{timestamp}.bin"
     with open(filename, "wb") as f:
         f.write(body)

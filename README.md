@@ -24,16 +24,29 @@ openssl req -x509 -newkey rsa:2048 -nodes \
 ##### Usage
 
 - In a "server" terminal: `python srv.py`
-- In a "client" terminal: 
+
+```bash
+(myenv) ➜  python srv.py                                          
+INFO:     Started server process [6532]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:35428 - "POST /raw HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55288 - "POST /raw HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55300 - "POST /raw HTTP/1.1" 200 OK
 ```
-curl -k https://myapi.local/hello
+
+
+- In a "client" terminal: 
+```bash
+➜  curl -k https://myapi.local/hello
 {"message":"Hello from FastAPI via Nginx"}
 
-curl -k -X POST https://myapi.local/raw -d "Hello world in raw data"
+➜  curl -k -X POST https://myapi.local/raw -d "Hello world in raw data"
 {"length":23,"preview":"Hello world in raw data","saved":"uploads/20250922T131419Z.bin"}
 
-curl -k -X POST http://localhost:8000/raw --data-binary @test_data/received_file_20250708_060657.bin
-{"length":11311,"preview":"\u0000\u0000\u0007,HM-0225-00031\u0000PlhF4:00:46:29:7F:A7c1\u0012\u00002\u0000\u0015\u0018\u0001\u0001\u0000\u0003\u0000\u0000\u0000olh\b\u0000\u0000\u0000<\u0011\f\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0004\u0000\u0007\u000f\u0002ZZ2\u0000\u0005\u0000\u0000\u0000\u0000\u0000\u0000","saved":"uploads/20250922T154543Z.bin"}
+➜  curl -k -X POST http://localhost:8000/raw --data-binary @test_data/received_file_20250708_060657.bin
+{"length":11311,"preview":"\u0000\u0000\u0007,HM-0225-00031\u0000PlhF4:00:46:29:7F:A7c1\u0012\u00002\u0000\u0015\u0018\u0001\u0001\u0000\u0003\u0000\u0000\u0000olh\b\u0000\u0000\u0000<\u0011\f\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0004\u0000\u0007\u000f\u0002ZZ2\u0000\u0005\u0000\u0000\u0000\u0000\u0000\u0000","saved":"uploads/20250922T155451Z.bin"}%
 ```
 
 The route `raw` will create a bin file with the raw binary received in the payload
