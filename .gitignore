@@ -2,3 +2,5 @@ uploads/
 *.bin
 .venvs/
 *.pyc
+test_data/
+

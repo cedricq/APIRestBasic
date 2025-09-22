@@ -31,6 +31,9 @@ curl -k https://myapi.local/hello
 
 curl -k -X POST https://myapi.local/raw -d "Hello world in raw data"
 {"length":23,"preview":"Hello world in raw data","saved":"uploads/20250922T131419Z.bin"}
+
+curl -k -X POST http://localhost:8000/raw --data-binary @test_data/received_file_20250708_060657.bin
+{"length":11311,"preview":"\u0000\u0000\u0007,HM-0225-00031\u0000PlhF4:00:46:29:7F:A7c1\u0012\u00002\u0000\u0015\u0018\u0001\u0001\u0000\u0003\u0000\u0000\u0000olh\b\u0000\u0000\u0000<\u0011\f\u0000\u0013\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0004\u0000\u0007\u000f\u0002ZZ2\u0000\u0005\u0000\u0000\u0000\u0000\u0000\u0000","saved":"uploads/20250922T154543Z.bin"}
 ```
 
 The route `raw` will create a bin file with the raw binary received in the payload
