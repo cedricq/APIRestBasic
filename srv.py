@@ -11,7 +11,7 @@ def hello():
 
 @app.post("/raw")
 async def receive_raw(request: Request):
-    body = await request.body()   # récupère le contenu brut (bytes)
+    body = await request.body()   # retrieve raw data (bytes)
     os.makedirs("uploads", exist_ok=True)
     timestamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
     filename = f"uploads/{timestamp}.bin"
@@ -25,4 +25,4 @@ async def receive_raw(request: Request):
     }
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)  # interne, non exposé
+    uvicorn.run(app, host="127.0.0.1", port=8000)  
