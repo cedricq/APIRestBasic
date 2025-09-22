@@ -3,4 +3,4 @@ uploads/
 .venvs/
 *.pyc
 test_data/
-
+uploads/
