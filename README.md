@@ -2,7 +2,7 @@
 
 ##### Setup
 
-- **Certs & key** 
+- **Certs & key** for local testing purpose
 ```
 mkdir -p ~/certs
 openssl req -x509 -newkey rsa:2048 -nodes \
@@ -50,3 +50,4 @@ INFO:     127.0.0.1:55300 - "POST /raw HTTP/1.1" 200 OK
 ```
 
 The route `raw` will create a bin file with the raw binary received in the payload
+
